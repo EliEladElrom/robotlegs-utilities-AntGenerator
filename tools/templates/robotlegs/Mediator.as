@@ -26,7 +26,7 @@ package @namespace@.@view.dir@.mediators
 	public class @gesture@Mediator extends Mediator
 	{
 		[Inject]
-		public var @gesture@View:@gesture@View;		
+		public var @lowerCaseGesture@View:@gesture@View;		
 		
 		/**
 		 * Override the invoked of the <code>IMediator</code> and allow you to place your own initialization. 

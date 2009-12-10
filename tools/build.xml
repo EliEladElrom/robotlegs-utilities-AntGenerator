@@ -181,6 +181,9 @@
 	<target name="create-view-mediator" >
 		<echo>${log.view.mediator.message}</echo>
 		
+	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
+	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />		
+		
 	    <copy file="${robotlegs.templates.dir}/Mediator.as" 
 	    	tofile="${project.url}/${view.dir}/mediators/${gesture}Mediator.as" overwrite="${overwrite.files}" >
 	        <filterchain>
@@ -193,6 +196,8 @@
 						<token key="year" value="${year}" />
 						<token key="gesture" value="${gesture}" />
                     	<token key="view.dir" value="${view.dir}" />
+        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
+        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />	           	
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
