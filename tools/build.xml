@@ -101,7 +101,7 @@
 		
 		<replace file="${project.url}/${project.name}Context.as" 
 			     token="super.startup();" 
-			     value="dispatchEvent( ContextEvent( ContextEvent.STARTUP ) );"
+			     value="dispatchEvent( new ContextEvent( ContextEvent.STARTUP ) );"
 			     />
 	</target>
 
