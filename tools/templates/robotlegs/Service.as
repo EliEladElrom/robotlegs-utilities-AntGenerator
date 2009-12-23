@@ -77,7 +77,7 @@ package @namespace@.service
 		{
 			// handle fault
 			
-			logger.error("serviceResultHandler"); 
+			logger.error("serviceFaultHandler"); 
 		}
 	}
 }
