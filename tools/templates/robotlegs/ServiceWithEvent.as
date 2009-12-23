@@ -65,6 +65,11 @@ package @namespace@.service
 			// handle result
 			
 			logger.info("serviceResultHandler");  
+			
+			this.dispatch( new @gesture@Event( ) );
+			
+			// add this line to the mediator onRegister method, if needed:
+			// eventMap.mapListener( eventDispatcher, @gesture@Event.@upperCaseGesture@_EVENT, handler );			
 		}
 		
 		/**
