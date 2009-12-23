@@ -11,6 +11,8 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 */
 package @namespace@.service
 {
+	import @namespace@.events.@gesture@Event;
+	
 	import flash.utils.describeType;
 	import mx.logging.Log;
 	
