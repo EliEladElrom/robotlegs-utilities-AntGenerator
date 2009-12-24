@@ -380,8 +380,8 @@
 		
 		<echo>Register model with context class</echo>
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="// TODO: Add Model" 
-			     value="// TODO: Add Model${line.separator}
+			     token="// todo: Add Model" 
+			     value="// todo: Add Model${line.separator}
 			        injector.mapSingleton( ${gesture}Model );"
 			     />
 		
