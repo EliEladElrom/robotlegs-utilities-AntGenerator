@@ -9,7 +9,7 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package @namespace@.@vo.dir@
+package @namespace@.@model.dir@.@vo.dir@
 {
     [Bindable]
     /**

@@ -303,6 +303,7 @@
 						<token key="year" value="${year}" />
 						<token key="gesture" value="${gesture}" />
                     	<token key="vo.dir" value="${vo.dir}" />
+                    	<token key="model.dir" value="${model.dir}" />
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
