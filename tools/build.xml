@@ -292,7 +292,7 @@
 		<echo>${log.value.object.message}</echo>
 		
 	    <copy file="${robotlegs.templates.dir}/ValueObject.as" 
-	    	tofile="${project.url}/${vo.dir}/${gesture}VO.as" overwrite="${overwrite.files}" >
+	    	tofile="${project.url}/${model.dir}/${vo.dir}/${gesture}VO.as" overwrite="${overwrite.files}" >
 	        <filterchain>
 	           <replacetokens>
 						<token key="author.name" value="${author.name}" />

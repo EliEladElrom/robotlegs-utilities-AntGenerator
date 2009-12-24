@@ -30,8 +30,6 @@ package @namespace@.events
 		 * is utilized to guarantee a unique Event type.
 		 * </p>
 		 *
-		 * @see com.adobe.cairngorm.control.CairngormEvent
-		 *
 		 */
 		public static const @upperCaseGesture@_EVENT:String = "@namespace@.events.@gesture@Event";
 		
