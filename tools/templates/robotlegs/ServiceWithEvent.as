@@ -65,7 +65,6 @@ package @namespace@.service
 		protected function serviceResultHandler(event:Object):void
 		{
 			// handle result
-			
 			logger.info("serviceResultHandler");  
 			
 			this.dispatch( new @gesture@Event( ) );
@@ -83,7 +82,6 @@ package @namespace@.service
 		protected function serviceFaultHandler(event:Object):void
 		{
 			// handle fault
-			
 			logger.error("serviceFaultHandler"); 
 		}
 	}

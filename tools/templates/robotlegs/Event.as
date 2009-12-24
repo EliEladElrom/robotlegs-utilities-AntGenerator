@@ -42,9 +42,9 @@ package @namespace@.events
 		 * @see @sequenceToUpperCase@_EVENT;
 		 *
 		 */
-		public function @gesture@Event() 
+		public function @gesture@Event( type:String ) 
 		{
-			super( @upperCaseGesture@_EVENT );
+			super( type, true, true );
 		}
 		
 		/**
@@ -55,7 +55,7 @@ package @namespace@.events
 		 */
 		public override function clone() : Event
 		{
-			var event:@gesture@Event = new @gesture@Event();
+			var event:@gesture@Event = new @gesture@Event( this.type );
 			return event;
 		}		
 	}

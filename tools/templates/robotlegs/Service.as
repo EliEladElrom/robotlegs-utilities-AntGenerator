@@ -63,7 +63,6 @@ package @namespace@.service
 		protected function serviceResultHandler(event:Object):void
 		{
 			// handle result
-			
 			logger.info("serviceResultHandler");  
 		}
 		
@@ -76,7 +75,6 @@ package @namespace@.service
 		protected function serviceFaultHandler(event:Object):void
 		{
 			// handle fault
-			
 			logger.error("serviceFaultHandler"); 
 		}
 	}
