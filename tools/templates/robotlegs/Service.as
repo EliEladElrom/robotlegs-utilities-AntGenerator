@@ -22,7 +22,7 @@ package @namespace@.services
 	
 	import org.robotlegs.mvcs.Actor;	
 	
-	public class @gesture@Service extends Actor
+	public class @gesture@Service extends Actor implements I@gesture@Service
 	{
 		/**
 		 * Create variable to point to this class. 
