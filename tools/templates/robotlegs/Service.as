@@ -9,7 +9,7 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package @namespace@.service
+package @namespace@.services
 {
 	import flash.utils.describeType;
 	import mx.logging.Log;
@@ -45,13 +45,17 @@ package @namespace@.service
 
 		public function send():void
 		{
+			// this is example of HTTPService however, you can change to any RPC
+			// I also recommend that you rename the method name
+			// to a more meaningful name
+			
 			var service:HTTPService = new HTTPService();
-			var responder:Responder = new Responder(serviceResultHandler, serviceFaultHandler);
+			var responder:Responder = new Responder( serviceResultHandler, serviceFaultHandler );
 			var token:AsyncToken;
 			service.resultFormat = "e4x";
 			service.url = "";
 			token = service.send();
-			token.addResponder(responder);
+			token.addResponder( responder );
 		}
 		
 		/**

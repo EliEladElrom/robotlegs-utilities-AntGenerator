@@ -26,12 +26,15 @@ package @namespace@.events
 		 * Defines the constant for the unique the <code>@gesture@Event</code>
 		 *
 		 * <p>
-		 * The fully qualified classpath "@namespace@.events.@gesture@Event"
+		 * The fully qualified classpath.
 		 * is utilized to guarantee a unique Event type.
+		 * 
+		 * List of all the events consts will be posted here.
+		 * 
 		 * </p>
 		 *
 		 */
-		public static const @upperCaseGesture@_EVENT:String = "@namespace@.events.@gesture@Event";
+		public static const @upperCaseGesture@_EVENT:String = "@namespace@.events.@gesture@Event.@upperCaseGesture@_EVENT";
 		
 		/**
 		 *

@@ -191,7 +191,7 @@
 	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
 	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />		
 		
-	    <copy file="${robotlegs.templates.dir}/Command.as" 
+	    <copy file="${robotlegs.templates.dir}/ServiceCommand.as" 
 	    	  tofile="${project.url}/${control.dir}/${gesture}Command.as" 
 	    	  overwrite="${overwrite.files}" >
 	        <filterchain>
@@ -267,9 +267,9 @@
 		
 		<echo>Register service with context class</echo>
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="// TODO: Add Services" 
-			     value="// TODO: Add Services${line.separator}
-			        injector.mapSingletonOf( ${gesture}Service, ${gesture}Service );"
+			     token="// todo: Add Services" 
+			     value="// todo: Add Services${line.separator}
+			        injector.mapSingletonOf( I${gesture}Service, ${gesture}Service );"
 			     />	    	
 		
 		<echo>Register command with context class</echo>
@@ -278,13 +278,6 @@
 			     value="//todo: add commands${line.separator}
 			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_EVENT, ${gesture}Command, ${gesture}Event);"
 			     />
-			     
-		<echo>Register service with context class</echo>
-		<replace file="${project.url}/${project.name}Context.as" 
-			     token="// TODO: Add Services" 
-			     value="// TODO: Add Services${line.separator}
-			        injector.mapSingletonOf( I${gesture}Service, ${gesture}Service );"
-			     />			     
 	</target>	
 	
 	<!-- create ValueObject class -->

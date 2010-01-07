@@ -9,7 +9,7 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package @namespace@.service
+package @namespace@.services
 {
 	public interface I@gesture@Service
 	{

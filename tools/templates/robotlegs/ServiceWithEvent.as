@@ -9,7 +9,7 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 @internal 
 
 */
-package @namespace@.service
+package @namespace@.services
 {
 	import @namespace@.events.@gesture@Event;
 	
@@ -67,7 +67,7 @@ package @namespace@.service
 			// handle result
 			logger.info("serviceResultHandler");  
 			
-			this.dispatch( new @gesture@Event( ) );
+			this.dispatch( new @gesture@Event( @gesture@Event.@upperCaseGesture@_EVENT ) );
 			
 			// add this line to the mediator onRegister method, if needed:
 			// eventMap.mapListener( eventDispatcher, @gesture@Event.@upperCaseGesture@_EVENT, handler );			
