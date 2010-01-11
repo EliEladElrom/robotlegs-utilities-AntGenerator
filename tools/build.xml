@@ -140,7 +140,7 @@
 	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
 	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />		
 		
-	    <copy file="${robotlegs.templates.dir}/Command.as" 
+	    <copy file="${robotlegs.templates.dir}/CommandWithEvent.as" 
 	    	  tofile="${project.url}/${control.dir}/${gesture}Command.as" 
 	    	  overwrite="${overwrite.files}" >
 	        <filterchain>
