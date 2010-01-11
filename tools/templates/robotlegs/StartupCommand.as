@@ -16,6 +16,7 @@ package @namespace@.controller
 	import mx.logging.ILogger;
 	import mx.logging.Log;
 	
+	import org.osflash.thunderbolt.ThunderBoltTarget;
 	import org.robotlegs.base.ContextEvent;
 	import org.robotlegs.mvcs.Command;
 	
@@ -47,6 +48,16 @@ package @namespace@.controller
 		
 		/**
 		 *
+		 * Define an instance of <code>ThunderBoltTarget</code>
+		 *
+		 * @see org.osflash.thunderbolt.ThunderBoltTarget
+		 * @see mx.logging.Log
+		 *
+		 */
+		private var _target: ThunderBoltTarget = new ThunderBoltTarget();
+		
+		/**
+		 *
 		 * Method handle the logic for <code>@gesture@Command</code>
 		 *
 		 */        
@@ -54,6 +65,10 @@ package @namespace@.controller
 		{
 			// logging command to logging API
 			logger.info("execute");        	
+			
+			// Inject thunderbolt into the built-in logging API
+			_target.filters = ["@namespace@.*"];
+			Log.addTarget(_target); 
 			
 			// Do some custom startup stuff here!
 			

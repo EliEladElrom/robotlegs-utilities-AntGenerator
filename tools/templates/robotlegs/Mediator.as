@@ -15,6 +15,10 @@ package @namespace@.@view.dir@.mediators
 	import org.robotlegs.core.IMediator;
 	import org.robotlegs.mvcs.Mediator;
 	
+	import flash.utils.describeType;
+	import mx.logging.ILogger;
+	import mx.logging.Log;	
+	
 	/**
 	 * <p>The mediator is used to handle framework interaction with View Components. 
 	 * A Mediator will listen for framework events, add event listeners to the View Components, 
@@ -27,6 +31,14 @@ package @namespace@.@view.dir@.mediators
 	{
 		[Inject]
 		public var @lowerCaseGesture@View:@gesture@View;		
+		
+		/**
+		 * Create variable to point to this class. 
+		 * 
+		 * @private
+		 *
+		 */     	
+		private var logger:ILogger = Log.getLogger(describeType(this).@name.split("::").join("."));			
 		
 		//--------------------------------------------------------------------------
 		//
@@ -47,6 +59,8 @@ package @namespace@.@view.dir@.mediators
 		 */		
 		override public function onRegister():void
 		{
+			logger.info("onRegister");
+			
 		}
 		
 		//--------------------------------------------------------------------------
