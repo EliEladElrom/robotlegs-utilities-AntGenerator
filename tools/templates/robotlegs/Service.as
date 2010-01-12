@@ -52,6 +52,7 @@ package @namespace@.services
 			var service:HTTPService = new HTTPService();
 			var responder:Responder = new Responder( serviceResultHandler, serviceFaultHandler );
 			var token:AsyncToken;
+			
 			service.resultFormat = "e4x";
 			service.url = "";
 			token = service.send();

@@ -345,8 +345,8 @@
 		
 		<echo>Register mediator with context class</echo>
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="// TODO: Add View" 
-			     value="// TODO: Add View${line.separator}
+			     token="// todo: Add View" 
+			     value="// todo: Add View${line.separator}
 					      mediatorMap.mapView(${gesture}View, ${gesture}Mediator);"
 			     />
 		
