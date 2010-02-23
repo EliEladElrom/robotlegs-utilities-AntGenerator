@@ -24,16 +24,8 @@ package @namespace@.services
 	
 	import org.robotlegs.mvcs.Actor;	
 	
-	public class @gesture@Service extends Actor
+	public class @gesture@Service extends BaseService implements I@gesture@Service
 	{
-		/**
-		 * Create variable to point to this class. 
-		 * 
-		 * @private
-		 *
-		 */     	
-		private var logger:ILogger = Log.getLogger(describeType(this).@name.split("::").join("."));
-		
 		/**
 		 * Constructor
 		 * 
@@ -71,18 +63,6 @@ package @namespace@.services
 			
 			// add this line to the mediator onRegister method, if needed:
 			// eventMap.mapListener( eventDispatcher, @gesture@Event.@upperCaseGesture@_EVENT, handler );			
-		}
-		
-		/**
-		 * Handle fault
-		 * 
-		 * @param event
-		 * 
-		 */		
-		protected function serviceFaultHandler(event:Object):void
-		{
-			// handle fault
-			logger.error("serviceFaultHandler"); 
 		}
 	}
 }

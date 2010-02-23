@@ -22,16 +22,8 @@ package @namespace@.services
 	
 	import org.robotlegs.mvcs.Actor;	
 	
-	public class @gesture@Service extends Actor implements I@gesture@Service
+	public class @gesture@Service extends BaseService implements I@gesture@Service
 	{
-		/**
-		 * Create variable to point to this class. 
-		 * 
-		 * @private
-		 *
-		 */     	
-		private var logger:ILogger = Log.getLogger(describeType(this).@name.split("::").join("."));
-		
 		/**
 		 * Constructor
 		 * 
@@ -69,18 +61,6 @@ package @namespace@.services
 		{
 			// handle result
 			logger.info("serviceResultHandler");  
-		}
-		
-		/**
-		 * Handle fault
-		 * 
-		 * @param event
-		 * 
-		 */		
-		protected function serviceFaultHandler(event:Object):void
-		{
-			// handle fault
-			logger.error("serviceFaultHandler"); 
 		}
 	}
 }
