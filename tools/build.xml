@@ -22,6 +22,7 @@
 		<mkdir dir="${project.url}/${view.dir}/components" />
 		<mkdir dir="${project.url}/${view.dir}/mediators" />
 		<mkdir dir="${project.url}/${view.dir}/helpers" />
+		<mkdir dir="${project.url}/${view.dir}/presenters" />
         <mkdir dir="${project.url}/${model.dir}/${vo.dir}" />		
 	</target>
     
@@ -371,6 +372,50 @@
 			     />
 		
 	</target>
+	
+	
+	<!-- create presenter-view class -->
+	<target name="create-presenter-view" >
+		<echo>${log.presenter.view.message}</echo>
+		
+	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
+	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />		
+		
+	    <copy file="${robotlegs.templates.dir}/Presenter.as" 
+	    	tofile="${project.url}/${view.dir}/presenters/${gesture}Presenter.as" overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+						<token key="namespace" value="${namespace}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}" />
+                    	<token key="view.dir" value="${view.dir}" />
+        		        <token key="upperCaseGesture" value="${upperCaseGesture}" />
+        	           	<token key="lowerCaseGesture" value="${lowerCaseGesture}" />	           	
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+		
+	    <copy file="${robotlegs.templates.dir}/View.mxml" 
+	    	tofile="${project.url}/${view.dir}/${gesture}View.mxml" overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+						<token key="namespace" value="${namespace}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}" />
+                    	<token key="view.dir" value="${view.dir}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+		
+	</target>	
 	
 	<!-- create model class -->
 	<target name="create-model-class" >
