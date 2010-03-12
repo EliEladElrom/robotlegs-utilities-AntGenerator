@@ -39,6 +39,9 @@ package @namespace@.services
 
 		public function send():void
 		{
+			/*
+			
+			// HTTPService example
 			var service:HTTPService = new HTTPService();
 			var responder:Responder = new Responder(serviceResultHandler, serviceFaultHandler);
 			var token:AsyncToken;
@@ -46,6 +49,17 @@ package @namespace@.services
 			service.url = "";
 			token = service.send();
 			token.addResponder(responder);
+			
+			// remote object example
+			var responder:CallResponder = new CallResponder();
+			var service:ServiceName = new ServiceName();
+			
+			responder.addEventListener(ResultEvent.RESULT, serviceResultHandler);
+			service.addEventListener(FaultEvent.FAULT, serviceFaultHandler);
+			
+			responder.token = service.serviceMethodName();
+			
+			*/
 		}
 		
 		/**
@@ -59,10 +73,10 @@ package @namespace@.services
 			// handle result
 			logger.info("serviceResultHandler");  
 			
-			this.dispatch( new @gesture@Event( @gesture@Event.@upperCaseGesture@_EVENT ) );
+			this.dispatch( new @gesture@Event( @gesture@Event.@upperCaseGesture@_RESULT_EVENT ) );
 			
 			// add this line to the mediator onRegister method, if needed:
-			// eventMap.mapListener( eventDispatcher, @gesture@Event.@upperCaseGesture@_EVENT, handler );			
+			// eventMap.mapListener( eventDispatcher, @gesture@Event.@upperCaseGesture@_RESULTS_EVENT, handler );			
 		}
 	}
 }

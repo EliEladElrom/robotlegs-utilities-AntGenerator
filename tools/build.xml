@@ -210,7 +210,25 @@
 		<echo>${log.add.event.commmand.services.message}</echo>
 		
 	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
-	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />		
+	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
+		
+	    <copy file="${robotlegs.templates.dir}/ResultCommand.as" 
+	    	  tofile="${project.url}/${control.dir}/${gesture}ResultCommand.as" 
+	    	  overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="project.name" value="${project.name}" />
+					<token key="namespace" value="${namespace}" />
+					<token key="year" value="${year}" />
+					<token key="gesture" value="${gesture}" />
+		           	<token key="upperCaseGesture"  value="${upperCaseGesture}" />
+	           		<token key="lowerCaseGesture"  value="${lowerCaseGesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>		
 		
 	    <copy file="${robotlegs.templates.dir}/ServiceCommand.as" 
 	    	  tofile="${project.url}/${control.dir}/${gesture}Command.as" 
@@ -230,7 +248,7 @@
 	        </filterchain>
 	    </copy>
 		
-	    <copy file="${robotlegs.templates.dir}/Event.as" 
+	    <copy file="${robotlegs.templates.dir}/ServiceEvent.as" 
 	    	  tofile="${project.url}/${events.dir}/${gesture}Event.as" 
 	    	  overwrite="${overwrite.files}" >
 	        <filterchain>
@@ -297,7 +315,8 @@
 		<replace file="${project.url}/${project.name}Context.as" 
 			     token="//todo: add commands" 
 			     value="//todo: add commands${line.separator}
-			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_EVENT, ${gesture}Command, ${gesture}Event);"
+			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_EVENT, ${gesture}Command, ${gesture}Event);${line.separator}
+			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_RESULT_EVENT, ${gesture}ResultCommand, ${gesture}Event);"
 			     />
 	</target>	
 	
