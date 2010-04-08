@@ -43,6 +43,9 @@ package @namespace@.services
 		 */		
 		protected function serviceFaultHandler( event:FaultEvent ):void
 		{
+			// remove event listener			
+			event.currentTarget.removeEventListener(event.type, arguments.callee);
+
 			// handle fault
 			logger.error("serviceFaultHandler"); 
 			
