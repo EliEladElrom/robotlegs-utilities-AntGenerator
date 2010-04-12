@@ -11,8 +11,6 @@ Copyright (c) @year@ @company.name@, All Rights Reserved
 */
 package @namespace@.@view.dir@.presenters
 {
-	import com.sigma.monbijou.view.LoginView;
-	
 	import @namespace@.@view.dir@.@gesture@View;
 	
 	import flash.utils.describeType;
