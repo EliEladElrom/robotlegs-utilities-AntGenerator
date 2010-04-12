@@ -56,13 +56,15 @@ package @namespace@
 		 */		
 		override public function startup():void
 		{
-			//todo: add commands
+			// todo: add commands
 			
 			// todo: Add Model
 			
 			// todo: Add Services
 			
 			// todo: Add View
+			
+			// todo: add singleton
 			
 			// Startup complete
 			super.startup();

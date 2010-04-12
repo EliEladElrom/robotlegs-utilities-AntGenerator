@@ -115,8 +115,8 @@
 	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
 		
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="//todo: add commands" 
-			     value="//todo: add commands${line.separator}
+			     token="// todo: add commands" 
+			     value="// todo: add commands${line.separator}
 						     commandMap.mapEvent(ContextEvent.STARTUP, StartupCommand, ContextEvent, true);"
 			     />
 		
@@ -199,8 +199,8 @@
 		
 		<echo>Register command with context class</echo>
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="//todo: add commands" 
-			     value="//todo: add commands${line.separator}
+			     token="// todo: add commands" 
+			     value="// todo: add commands${line.separator}
 			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_EVENT, ${gesture}Command, ${gesture}Event);"
 			     />
 	</target>
@@ -313,8 +313,8 @@
 		
 		<echo>Register command with context class</echo>
 		<replace file="${project.url}/${project.name}Context.as" 
-			     token="//todo: add commands" 
-			     value="//todo: add commands${line.separator}
+			     token="// todo: add commands" 
+			     value="// todo: add commands${line.separator}
 			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_EVENT, ${gesture}Command, ${gesture}Event);${line.separator}
 			        commandMap.mapEvent(${gesture}Event.${upperCaseGesture}_RESULT_EVENT, ${gesture}ResultCommand, ${gesture}Event);"
 			     />
@@ -433,6 +433,13 @@
 	            </replacetokens>
 	        </filterchain>
 	    </copy>
+	    
+		<echo>Register singleton with context class</echo>
+		<replace file="${project.url}/${project.name}Context.as" 
+			     token="// todo: add singleton" 
+			     value="// todo: add singleton${line.separator}
+					      injector.mapSingleton( ${gesture}Presenter );"
+			     />	    
 		
 	</target>	
 	
