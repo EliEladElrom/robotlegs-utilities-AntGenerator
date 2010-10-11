@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009" 
-			   xmlns:s="library://ns.adobe.com/flex/spark" 
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+			   xmlns:s="library://ns.adobe.com/flex/spark"
 			   xmlns:mx="library://ns.adobe.com/flex/halo"
 			   xmlns:context="@namespace@.*"
 			   minWidth="1024" minHeight="768">
-	
+
+	<fx:Style source="Main.css"/>
+
 	<fx:Declarations>
 		<context:@project.name@Context contextView="{this}" />
 	</fx:Declarations>
-	
+
 </s:Application>
