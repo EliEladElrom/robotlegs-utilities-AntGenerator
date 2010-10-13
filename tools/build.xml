@@ -23,6 +23,7 @@
 		<mkdir dir="${project.url}/${view.dir}/mediators" />
 		<mkdir dir="${project.url}/${view.dir}/helpers" />
 		<mkdir dir="${project.url}/${view.dir}/presenters" />
+		<mkdir dir="${project.url}/${view.dir}/signals" />
         <mkdir dir="${project.url}/${model.dir}/${vo.dir}" />
 	</target>
 
@@ -340,7 +341,7 @@
 						<token key="project.name" value="${project.name}" />
 						<token key="namespace" value="${namespace}" />
 						<token key="year" value="${year}" />
-						<token key="gesture" value="${gesture}" />
+						<token key="gesture" value="${gesture}VO" />
                     	<token key="vo.dir" value="${vo.dir}" />
                     	<token key="model.dir" value="${model.dir}" />
 	            </replacetokens>
@@ -521,9 +522,110 @@
 		<replace file="${project.url}/${project.name}Context.as"
 			     token="// TODO: Add Services"
 			     value="// TODO: Add Services${line.separator}
-			        injector.mapSingletonOf( I${gesture}Service, ${gesture}Service );"
+			     injector.mapSingletonOf( I${gesture}Service, ${gesture}Service );"
 			     />
 
+	</target>
+
+	<!-- Add signal command user gesture -->
+	<target name="add-signal-command-user-gesture">
+		<echo>${log.add.signal.commmand.message}</echo>
+
+		<copy file="${robotlegs.templates.dir}/Signal.as" tofile="${project.url}/${signals.dir}/${gesture}Signal.as" >
+			<filterchain>
+				<replacetokens>
+					<token key="year" value="${year}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="project.name" value="${project.name}" />
+					<token key="namespace" value="${namespace}.${signals.dir}" />
+					<token key="gesture" value="${gesture}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+		<copy file="${robotlegs.templates.dir}/SignalCommand.as" tofile="${project.url}/${control.dir}/${gesture}Command.as">
+			<filterchain>
+				<replacetokens>
+					<token key="year" value="${year}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="project.name" value="${project.name}" />
+					<token key="namespace" value="${namespace}.${control.dir}" />
+					<token key="gesture" value="${gesture}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+
+		<replace file="${project.url}/${project.name}Context.as"
+			     token="// todo: add commands"
+			     value="// todo: add commands${line.separator}
+			        signalCommandMap.mapSignalClass(${gesture}Signal, ${gesture}Command);"
+			     />
+	</target>
+
+	<!-- Add Signal Command User Gesture -->
+	<target name="add-signal-command-param-user-gesture">
+		<echo>${log.add.signal.commmand.param.message}</echo>
+
+		<convertToCamelCase property="camelCaseGesture" value="${gesture}" />
+
+		<copy file="${robotlegs.templates.dir}/SignalWithParam.as" tofile="${project.url}/${signals.dir}/${gesture}Signal.as" >
+			<filterchain>
+				<replacetokens>
+					<token key="year" value="${year}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="project.name" value="${project.name}" />
+					<token key="namespace" value="${namespace}.${signals.dir}" />
+					<token key="gesture" value="${gesture}" />
+					<token key="camelCaseGesture" value="${camelCaseGesture}" />
+                	<token key="vo.dir" value="${vo.dir}" />
+                	<token key="model.dir" value="${model.dir}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+		<copy file="${robotlegs.templates.dir}/SignalCommandAndParam.as" tofile="${project.url}/${control.dir}/${gesture}Command.as">
+			<filterchain>
+				<replacetokens>
+					<token key="year" value="${year}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="project.name" value="${project.name}" />
+					<token key="namespace" value="${namespace}" />
+					<token key="gesture" value="${gesture}" />
+					<token key="camelCaseGesture" value="${camelCaseGesture}" />
+                	<token key="vo.dir" value="${vo.dir}" />
+                	<token key="model.dir" value="${model.dir}" />
+				</replacetokens>
+			</filterchain>
+		</copy>
+
+	    <copy file="${robotlegs.templates.dir}/ValueObject.as"
+	    	tofile="${project.url}/${model.dir}/${vo.dir}/${gesture}.as" overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+						<token key="namespace" value="${namespace}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}" />
+                    	<token key="vo.dir" value="${vo.dir}" />
+                    	<token key="model.dir" value="${model.dir}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+
+		<replace file="${project.url}/${project.name}Context.as"
+			     token="// todo: add commands"
+			     value="// todo: add commands${line.separator}
+			        signalCommandMap.mapSignalClass(${gesture}Signal, ${gesture}Command);"
+			     />
 	</target>
 
     <!-- private -->
@@ -537,6 +639,27 @@
 		<attribute name="property" />
 		<attribute name="value"    />
 		project.setNewProperty( attributes.get("property"), attributes.get("value").toLowerCase() );
+	</scriptdef>
+
+	<scriptdef name="convertToPascalCase" language="javascript">
+		<attribute name="property" />
+		<attribute name="value" />
+		val = attributes.get("value");
+		val = val.substr(0,1).toUpperCase() + val.substr(1);
+		project.setNewProperty( attributes.get("property"), val);
+	</scriptdef>
+
+	<scriptdef name="convertToCamelCase" language="javascript">
+		<attribute name="property" />
+		<attribute name="value" />
+		val = attributes.get("value");
+		val = val.substr(0,1).toLowerCase() + val.substr(1);
+		project.setNewProperty( attributes.get("property"), val);
+	</scriptdef>
+
+	<scriptdef name="setTabValue" language="javascript">
+		<attribute name="property" />
+		project.setNewProperty( attributes.get("property"), "\t");
 	</scriptdef>
 
 </project>

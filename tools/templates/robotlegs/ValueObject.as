@@ -1,12 +1,12 @@
 /*
 
-Copyright (c) @year@ @company.name@, All Rights Reserved 
+Copyright (c) @year@ @company.name@, All Rights Reserved
 
 @author   @author.name@
 @contact  @author.email@
 @project  @project.name@
 
-@internal 
+@internal
 
 */
 package @namespace@.@model.dir@.@vo.dir@
@@ -14,12 +14,12 @@ package @namespace@.@model.dir@.@vo.dir@
     [Bindable]
     /**
      *
-     * Defines the <code>@gesture@VO<code> Value Object implementation
+     * Defines the <code>@gesture@<code> Value Object implementation
      *
      */
-	public class @gesture@VO
+	public class @gesture@
 	{
-		public function @gesture@VO() 
+		public function @gesture@()
 		{
 		}
 	}

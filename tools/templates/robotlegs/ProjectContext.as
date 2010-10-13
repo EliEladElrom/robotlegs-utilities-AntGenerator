@@ -18,8 +18,9 @@ package @namespace@
 	import @namespace@.view.*;
 	import @namespace@.view.mediators.*;
 	import @namespace@.view.presenters.*;
+	import @namespace@.signals.*;
 
-	import org.robotlegs.mvcs.Context;
+	import org.robotlegs.mvcs.SignalContext;
 	import org.robotlegs.base.ContextEvent;
 
 	/**
@@ -41,7 +42,7 @@ package @namespace@
 	 * </ul>
 	 *
 	 */
-	public class @project.name@Context extends Context
+	public class @project.name@Context extends SignalContext
 	{
 
 		//---------------------------------------------------------------------
