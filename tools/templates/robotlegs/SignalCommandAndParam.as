@@ -13,6 +13,7 @@ package @namespace@
 {
 	import mx.logging.ILogger;
 	import mx.logging.Log;
+	import flash.utils.describeType;
 	import @namespace@.@model.dir@.@vo.dir@.@gesture@;
 	import org.robotlegs.mvcs.SignalCommand;
 

@@ -17,7 +17,7 @@ package @namespace@.@model.dir@.@vo.dir@
      * Defines the <code>@gesture@<code> Value Object implementation
      *
      */
-	public class @gesture@
+	public final class @gesture@
 	{
 		public function @gesture@()
 		{
