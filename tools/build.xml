@@ -627,6 +627,135 @@
 			        signalCommandMap.mapSignalClass(${gesture}Signal, ${gesture}Command);"
 			     />
 	</target>
+	
+	<target name="add-signal-command-service-user-gesture">
+
+		<echo>${log.add.signal.commmand.services.message}</echo>
+
+	    <convertToUpperCase property="upperCaseGesture" value="${gesture}" />
+	    <convertToLowerCase property="lowerCaseGesture" value="${gesture}" />
+		
+	    <copy file="${robotlegs.templates.dir}/SignalCommand.as"
+	    	  tofile="${project.url}/${control.dir}/${gesture}ResultCommand.as"
+	    	  overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="project.name" value="${project.name}" />
+	           		<token key="namespace" value="${namespace}.${control.dir}" />
+					<token key="year" value="${year}" />
+					<token key="gesture" value="${gesture}Result" />
+		           	<token key="upperCaseGesture"  value="${upperCaseGesture}" />
+	           		<token key="lowerCaseGesture"  value="${lowerCaseGesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>		
+
+	    <copy file="${robotlegs.templates.dir}/ServiceSignalCommand.as"
+	    	  tofile="${project.url}/${control.dir}/${gesture}Command.as"
+	    	  overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="project.name" value="${project.name}" />
+	           		<token key="namespace" value="${namespace}" />
+					<token key="year" value="${year}" />
+					<token key="gesture" value="${gesture}" />
+		           	<token key="upperCaseGesture"  value="${upperCaseGesture}" />
+	           		<token key="lowerCaseGesture"  value="${lowerCaseGesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+
+	    <copy file="${robotlegs.templates.dir}/Signal.as"
+	    	  tofile="${project.url}/${signals.dir}/${gesture}Signal.as"
+	    	  overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+					<token key="author.name" value="${author.name}" />
+					<token key="author.email" value="${author.email}" />
+					<token key="company.name" value="${company.name}" />
+					<token key="project.name" value="${project.name}" />
+	           		<token key="namespace" value="${namespace}.${signals.dir}" />
+					<token key="year" value="${year}" />
+					<token key="gesture" value="${gesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+		
+		    <copy file="${robotlegs.templates.dir}/Signal.as"
+		    	  tofile="${project.url}/${signals.dir}/${gesture}ResultSignal.as"
+		    	  overwrite="${overwrite.files}" >
+		        <filterchain>
+		           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+		           		<token key="namespace" value="${namespace}.${signals.dir}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}Result" />
+		            </replacetokens>
+		        </filterchain>
+		    </copy>		
+
+	    <copy file="${robotlegs.templates.dir}/ServiceWithSignal.as"
+	    	tofile="${project.url}/${services.dir}/${gesture}Service.as" overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+						<token key="namespace" value="${namespace}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}" />
+                    	<token key="services.dir " value="${services.dir}" />
+						<token key="gesture" value="${gesture}" />
+			           	<token key="upperCaseGesture" value="${upperCaseGesture}" />
+		           		<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+
+	    <copy file="${robotlegs.templates.dir}/IService.as"
+	    	tofile="${project.url}/${services.dir}/I${gesture}Service.as" overwrite="${overwrite.files}" >
+	        <filterchain>
+	           <replacetokens>
+						<token key="author.name" value="${author.name}" />
+						<token key="author.email" value="${author.email}" />
+						<token key="company.name" value="${company.name}" />
+						<token key="project.name" value="${project.name}" />
+						<token key="namespace" value="${namespace}" />
+						<token key="year" value="${year}" />
+						<token key="gesture" value="${gesture}" />
+                    	<token key="services.dir " value="${services.dir}" />
+						<token key="gesture" value="${gesture}" />
+			           	<token key="upperCaseGesture" value="${upperCaseGesture}" />
+		           		<token key="lowerCaseGesture" value="${lowerCaseGesture}" />
+	            </replacetokens>
+	        </filterchain>
+	    </copy>
+
+		<echo>Register service with context class</echo>
+		<replace file="${project.url}/${project.name}Context.as"
+			     token="// todo: Add Services"
+			     value="// todo: Add Services${line.separator}
+			        injector.mapSingletonOf( I${gesture}Service, ${gesture}Service );"
+			     />
+
+		<echo>Register command with context class</echo>
+		<replace file="${project.url}/${project.name}Context.as"
+			     token="// todo: add commands"
+			     value="// todo: add commands${line.separator}
+	          signalCommandMap.mapSignalClass(${gesture}Signal, ${gesture}Command);${line.separator}
+	          signalCommandMap.mapSignalClass(${gesture}ResultSignal, ${gesture}ResultCommand);"
+			     />
+	</target>	
 
     <!-- private -->
 	<scriptdef name="convertToUpperCase" language="javascript" >
